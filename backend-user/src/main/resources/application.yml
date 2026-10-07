@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: jiankang-backend-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jiankang?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    banner: false
+
+# JWT 配置
+jwt:
+  # 密钥需足够长（HS256 至少 32 字节），生产环境请更换
+  secret: jiankang-health-checkin-system-secret-key-2026
+  # 过期时间（毫秒），默认 7 天
+  expire: 604800000
+  header: Authorization
+  prefix: "Bearer "
+
+# 定时任务：异常提醒
+reminder:
+  # 每日 20:00 检查未打卡用户
+  check-cron: "0 0 20 * * ?"
+  # 每周日 20:00 检查周目标达成情况
+  goal-cron: "0 0 20 ? * SUN"
+
+logging:
+  level:
+    com.jiankang: info

@@ -1,0 +1,25 @@
+# 后端构建产物
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# 前端依赖与构建产物
+node_modules/
+dist/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# 日志
+*.log
+
+# Office 临时文件
+~$*
+
+# 暂不上传（以后想公开就删掉下面两行）
+docs/
+*.docx
